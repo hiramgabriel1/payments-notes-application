@@ -6,7 +6,7 @@ export class user {
     try {
       const query = await userModel.find();
 
-      query
+      return query
         ? res.status(200).json({ response: "success", data: query })
         : res.status(404).json({ responseError: "not found" });
     } catch (error) {
@@ -41,7 +41,8 @@ export class user {
         lastName: lastName,
       });
 
-      if (isDataExists) return res.status(401).json({ response: "el usuario ya existe" });
+      if (isDataExists)
+        return res.status(401).json({ response: "el usuario ya existe" });
 
       // todo: save user in database
       const saveData = await userModel.create(dataUser);
@@ -51,7 +52,6 @@ export class user {
             .status(200)
             .json({ response: "usuario guardado", details: saveData })
         : res.status(500).json({ response: "error" });
-
     } catch (error) {
       res.status(500).json({ responseError: error });
     }
@@ -59,13 +59,12 @@ export class user {
 
   async deleteUser(req: Request, res: Response) {
     try {
-        const { id } = req.params
+      const { id } = req.params;
 
-        // todo: find id to delete
-        const queryId = await userModel.findByIdAndDelete(id)
-
+      // todo: find id to delete
+      const queryId = await userModel.findByIdAndDelete(id);
     } catch (error) {
-        res.status(500).json({ response: error })
+      res.status(500).json({ response: error });
     }
   }
 }

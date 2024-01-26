@@ -13,26 +13,25 @@ const user = new mongoose.Schema({
     maxLength: 40,
   },
 
-  city: {
+  capitalPrestado: {
     type: String,
     require: true,
-    maxLenght: 20,
   },
 
-  mountPrestamo: {
+  total: {
     type: Number,
     require: true,
   },
 
-  totalInteres: {
+  fechaPrestamo: {
     type: Number,
   },
 
-  totalSumadoInteres: {
+  fechaPago: {
     type: Number,
   },
 
-  mount: {
+  paymentMethod: {
     type: Number,
   },
 });

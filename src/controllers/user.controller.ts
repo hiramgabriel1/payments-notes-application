@@ -19,21 +19,21 @@ export class user {
       const {
         username,
         lastName,
-        city,
-        mountPrestamo,
-        totalInteres,
-        totalSumadoInteres,
-        mount,
+        capitalPrestado,
+        total,
+        fechaPrestamo,
+        fechaPago,
+        paymentMethod,
       } = req.body;
 
       const dataUser = {
         username: username,
         lastName: lastName,
-        city: city,
-        mountPrestamo: mountPrestamo,
-        totalInteres: totalInteres,
-        totalSumadoInteres: totalSumadoInteres,
-        mount: mount,
+        capitalPrestado: capitalPrestado,
+        total: total,
+        fechaPrestamo: fechaPrestamo,
+        fechaPago: fechaPago,
+        paymentMethod: paymentMethod,
       };
 
       const isDataExists = await userModel.find({
@@ -41,8 +41,7 @@ export class user {
         lastName: lastName,
       });
 
-      if (isDataExists)
-        return res.status(401).json({ response: "el usuario ya existe" });
+      if (isDataExists) return res.status(401).json({ response: "el usuario ya existe" });
 
       // todo: save user in database
       const saveData = await userModel.create(dataUser);

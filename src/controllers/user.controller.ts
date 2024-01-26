@@ -46,7 +46,7 @@ export class user {
       // todo: save user in database
       const saveData = await userModel.create(dataUser);
 
-      saveData
+      return saveData
         ? res
             .status(200)
             .json({ response: "usuario guardado", details: saveData })

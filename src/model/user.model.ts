@@ -34,6 +34,14 @@ const user = new mongoose.Schema({
   paymentMethod: {
     type: String,
   },
+
+  pagado: {
+    type: Boolean,
+  },
+
+  cancelado: {
+    type: Boolean,
+  },
 });
 
 export const userModel = mongoose.model("users", user);

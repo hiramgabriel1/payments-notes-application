@@ -30,6 +30,12 @@ class user {
                 pagado: pagado,
                 cancelado: cancelado,
             };
+            const isDataExists = await user_model_1.userModel.findOne({
+                username: dataUser.username,
+                lastName: dataUser.lastName,
+            });
+            if (isDataExists)
+                return res.status(401).json({ response: "el usuario ya existe" });
             const saveData = await user_model_1.userModel.create(dataUser);
             return saveData
                 ? res

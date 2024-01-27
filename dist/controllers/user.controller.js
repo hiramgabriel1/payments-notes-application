@@ -6,9 +6,11 @@ class user {
     async getData(req, res) {
         try {
             const query = await user_model_1.userModel.find();
-            return query
-                ? res.status(200).json({ response: "success", data: query })
-                : res.status(404).json({ responseError: "not found" });
+            if (query) {
+                return query
+                    ? res.status(200).json({ response: "success", data: query })
+                    : res.status(404).json({ responseError: "not found" });
+            }
         }
         catch (error) {
             res.status(500).json({ responseError: error });
@@ -16,7 +18,7 @@ class user {
     }
     async createUser(req, res) {
         try {
-            const { username, lastName, capitalPrestado, total, fechaPrestamo, fechaPago, paymentMethod, } = req.body;
+            const { username, lastName, capitalPrestado, total, fechaPrestamo, fechaPago, paymentMethod, pagado, } = req.body;
             const dataUser = {
                 username: username,
                 lastName: lastName,
@@ -25,6 +27,7 @@ class user {
                 fechaPrestamo: new Date(fechaPrestamo),
                 fechaPago: new Date(fechaPago),
                 paymentMethod: paymentMethod,
+                pagado: pagado,
             };
             const isDataExists = await user_model_1.userModel.findOne({
                 username: dataUser.username,
@@ -51,6 +54,39 @@ class user {
                 response: "usuario eliminado correctamente",
                 details: queryId,
             });
+        }
+        catch (error) {
+            res.status(500).json({ response: error });
+        }
+    }
+    async modifyDataUser(req, res) {
+        try {
+            const { id } = req.params;
+            const newData = req.body;
+            const query = await user_model_1.userModel.findOneAndUpdate({ _id: id }, { $set: newData }, { new: true });
+            if (query) {
+                return res
+                    .status(200)
+                    .json({ response: "usuario editado", details: query });
+            }
+        }
+        catch (error) {
+            res.status(500).json({ response: error });
+        }
+    }
+    async getHistoryPaymentsByUser(req, res) {
+        try {
+            const query = await user_model_1.userModel.find({ pagado: true });
+            res.json({ response: query });
+        }
+        catch (error) {
+            res.status(500).json({ response: error });
+        }
+    }
+    async getUsersCancelados(req, res) {
+        try {
+            const query = await user_model_1.userModel.find({ cancelado: true });
+            res.json({ length: query.length, response: query });
         }
         catch (error) {
             res.status(500).json({ response: error });

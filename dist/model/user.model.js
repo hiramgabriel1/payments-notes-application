@@ -33,6 +33,12 @@ const user = new mongoose_1.default.Schema({
     paymentMethod: {
         type: String,
     },
+    pagado: {
+        type: Boolean,
+    },
+    cancelado: {
+        type: Boolean,
+    },
 });
 exports.userModel = mongoose_1.default.model("users", user);
 //# sourceMappingURL=user.model.js.map

@@ -31,7 +31,7 @@ const user = new mongoose_1.default.Schema({
         type: Number,
     },
     paymentMethod: {
-        type: Number,
+        type: String,
     },
 });
 exports.userModel = mongoose_1.default.model("users", user);

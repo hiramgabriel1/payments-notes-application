@@ -26,9 +26,9 @@ class user {
                 fechaPago: fechaPago,
                 paymentMethod: paymentMethod,
             };
-            const isDataExists = await user_model_1.userModel.find({
-                username: username,
-                lastName: lastName,
+            const isDataExists = await user_model_1.userModel.findOne({
+                username: dataUser.username,
+                lastName: dataUser.lastName,
             });
             if (isDataExists)
                 return res.status(401).json({ response: "el usuario ya existe" });
@@ -47,6 +47,10 @@ class user {
         try {
             const { id } = req.params;
             const queryId = await user_model_1.userModel.findByIdAndDelete(id);
+            res.json({
+                response: "usuario eliminado correctamente",
+                details: queryId,
+            });
         }
         catch (error) {
             res.status(500).json({ response: error });

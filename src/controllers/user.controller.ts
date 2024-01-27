@@ -36,12 +36,13 @@ export class user {
         paymentMethod: paymentMethod,
       };
 
-      const isDataExists = await userModel.find({
-        username: username,
-        lastName: lastName,
+      const isDataExists = await userModel.findOne({
+        username: dataUser.username,
+        lastName: dataUser.lastName,
       });
 
-      if (isDataExists) return res.status(401).json({ response: "el usuario ya existe" });
+      if (isDataExists)
+        return res.status(401).json({ response: "el usuario ya existe" });
 
       // todo: save user in database
       const saveData = await userModel.create(dataUser);
@@ -62,6 +63,11 @@ export class user {
 
       // todo: find id to delete
       const queryId = await userModel.findByIdAndDelete(id);
+
+      res.json({
+        response: "usuario eliminado correctamente",
+        details: queryId,
+      });
     } catch (error) {
       res.status(500).json({ response: error });
     }

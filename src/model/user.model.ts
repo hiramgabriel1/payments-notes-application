@@ -32,7 +32,7 @@ const user = new mongoose.Schema({
   },
 
   paymentMethod: {
-    type: Number,
+    type: String,
   },
 });
 

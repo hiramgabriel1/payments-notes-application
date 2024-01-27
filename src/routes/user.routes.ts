@@ -8,7 +8,7 @@ const path = "/api/v1";
 routerUser.get(`${path}/`, (req, res) => {
   userController.getData(req, res);
 });
-
+  
 routerUser.post(`${path}/create-user`, (req, res) => {
   userController.createUser(req, res);
 });

@@ -17,4 +17,16 @@ routerUser.delete(`${path}/delete-user/:id`, (req, res) => {
   userController.deleteUser(req, res);
 });
 
+routerUser.patch(`${path}/edit-user/:id`, (req, res) => {
+  userController.modifyDataUser(req, res);
+});
+
+routerUser.get(`${path}/history`, (req, res) => {
+  userController.getHistoryPaymentsByUser(req, res);
+});
+
+routerUser.get(`${path}/users-cancelados`, (req, res) => {
+  userController.getUsersCancelados(req, res);
+});
+
 export default routerUser;

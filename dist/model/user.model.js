@@ -25,13 +25,19 @@ const user = new mongoose_1.default.Schema({
         require: true,
     },
     fechaPrestamo: {
-        type: Number,
+        type: Date,
     },
     fechaPago: {
-        type: Number,
+        type: Date,
     },
     paymentMethod: {
-        type: Number,
+        type: String,
+    },
+    pagado: {
+        type: Boolean,
+    },
+    cancelado: {
+        type: Boolean,
     },
 });
 exports.userModel = mongoose_1.default.model("users", user);

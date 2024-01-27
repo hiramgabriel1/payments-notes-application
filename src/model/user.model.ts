@@ -24,15 +24,23 @@ const user = new mongoose.Schema({
   },
 
   fechaPrestamo: {
-    type: Number,
+    type: Date,
   },
 
   fechaPago: {
-    type: Number,
+    type: Date,
   },
 
   paymentMethod: {
-    type: Number,
+    type: String,
+  },
+
+  pagado: {
+    type: Boolean,
+  },
+
+  cancelado: {
+    type: Boolean,
   },
 });
 

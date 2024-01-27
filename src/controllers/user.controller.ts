@@ -27,6 +27,7 @@ export class user {
         fechaPago,
         paymentMethod,
         pagado,
+        cancelado,
       } = req.body;
 
       const dataUser = {
@@ -38,6 +39,7 @@ export class user {
         fechaPago: new Date(fechaPago),
         paymentMethod: paymentMethod,
         pagado: pagado,
+        cancelado: cancelado,
       };
 
       const isDataExists = await userModel.findOne({

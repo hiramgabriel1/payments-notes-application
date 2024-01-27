@@ -42,13 +42,12 @@ export class user {
         cancelado: cancelado,
       };
 
-      // const isDataExists = await userModel.findOne({
-      //   username: dataUser.username,
-      //   lastName: dataUser.lastName,
-      // });
+      const isDataExists = await userModel.findOne({
+        username: dataUser.username,
+        lastName: dataUser.lastName,
+      });
 
-      // if (isDataExists)
-      //   return res.status(401).json({ response: "el usuario ya existe" });
+      if (isDataExists) return res.status(401).json({ response: "el usuario ya existe" });
 
       // todo: save user in database
       const saveData = await userModel.create(dataUser);

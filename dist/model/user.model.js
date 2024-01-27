@@ -25,10 +25,10 @@ const user = new mongoose_1.default.Schema({
         require: true,
     },
     fechaPrestamo: {
-        type: Number,
+        type: Date,
     },
     fechaPago: {
-        type: Number,
+        type: Date,
     },
     paymentMethod: {
         type: String,

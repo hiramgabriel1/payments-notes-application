@@ -28,24 +28,24 @@ export declare const userModel: mongoose.Model<{
     lastName?: string;
     capitalPrestado?: string;
     total?: number;
-    fechaPrestamo?: number;
-    fechaPago?: number;
+    fechaPrestamo?: Date;
+    fechaPago?: Date;
     paymentMethod?: string;
 }, {}, {}, {}, mongoose.Document<unknown, {}, {
     username?: string;
     lastName?: string;
     capitalPrestado?: string;
     total?: number;
-    fechaPrestamo?: number;
-    fechaPago?: number;
+    fechaPrestamo?: Date;
+    fechaPago?: Date;
     paymentMethod?: string;
 }> & {
     username?: string;
     lastName?: string;
     capitalPrestado?: string;
     total?: number;
-    fechaPrestamo?: number;
-    fechaPago?: number;
+    fechaPrestamo?: Date;
+    fechaPago?: Date;
     paymentMethod?: string;
 } & {
     _id: mongoose.Types.ObjectId;
@@ -54,24 +54,24 @@ export declare const userModel: mongoose.Model<{
     lastName?: string;
     capitalPrestado?: string;
     total?: number;
-    fechaPrestamo?: number;
-    fechaPago?: number;
+    fechaPrestamo?: Date;
+    fechaPago?: Date;
     paymentMethod?: string;
 }, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
     username?: string;
     lastName?: string;
     capitalPrestado?: string;
     total?: number;
-    fechaPrestamo?: number;
-    fechaPago?: number;
+    fechaPrestamo?: Date;
+    fechaPago?: Date;
     paymentMethod?: string;
 }>> & mongoose.FlatRecord<{
     username?: string;
     lastName?: string;
     capitalPrestado?: string;
     total?: number;
-    fechaPrestamo?: number;
-    fechaPago?: number;
+    fechaPrestamo?: Date;
+    fechaPago?: Date;
     paymentMethod?: string;
 }> & {
     _id: mongoose.Types.ObjectId;

@@ -22,8 +22,8 @@ class user {
                 lastName: lastName,
                 capitalPrestado: capitalPrestado,
                 total: total,
-                fechaPrestamo: fechaPrestamo,
-                fechaPago: fechaPago,
+                fechaPrestamo: new Date(fechaPrestamo),
+                fechaPago: new Date(fechaPago),
                 paymentMethod: paymentMethod,
             };
             const isDataExists = await user_model_1.userModel.findOne({

@@ -31,8 +31,8 @@ export class user {
         lastName: lastName,
         capitalPrestado: capitalPrestado,
         total: total,
-        fechaPrestamo: fechaPrestamo,
-        fechaPago: fechaPago,
+        fechaPrestamo: new Date(fechaPrestamo),
+        fechaPago: new Date(fechaPago),
         paymentMethod: paymentMethod,
       };
 

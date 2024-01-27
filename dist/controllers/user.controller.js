@@ -18,7 +18,7 @@ class user {
     }
     async createUser(req, res) {
         try {
-            const { username, lastName, capitalPrestado, total, fechaPrestamo, fechaPago, paymentMethod, pagado, } = req.body;
+            const { username, lastName, capitalPrestado, total, fechaPrestamo, fechaPago, paymentMethod, pagado, cancelado, } = req.body;
             const dataUser = {
                 username: username,
                 lastName: lastName,
@@ -28,6 +28,7 @@ class user {
                 fechaPago: new Date(fechaPago),
                 paymentMethod: paymentMethod,
                 pagado: pagado,
+                cancelado: cancelado,
             };
             const isDataExists = await user_model_1.userModel.findOne({
                 username: dataUser.username,

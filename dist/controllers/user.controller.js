@@ -93,6 +93,18 @@ class user {
             res.status(500).json({ response: error });
         }
     }
+    async getUserById(req, res) {
+        try {
+            const { username } = req.params;
+            const query = await user_model_1.userModel.findOne({ username });
+            if (!query)
+                return res.json({ response: "error" });
+            return res.json({ response: "user find", details: query });
+        }
+        catch (error) {
+            res.status(500).json({ response: error });
+        }
+    }
 }
 exports.user = user;
 //# sourceMappingURL=user.controller.js.map

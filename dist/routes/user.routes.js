@@ -23,5 +23,8 @@ routerUser.get(`${path}/history`, (req, res) => {
 routerUser.get(`${path}/users-cancelados`, (req, res) => {
     userController.getUsersCancelados(req, res);
 });
+routerUser.get(`${path}/user/:username`, (req, res) => {
+    userController.getUserById(req, res);
+});
 exports.default = routerUser;
 //# sourceMappingURL=user.routes.js.map

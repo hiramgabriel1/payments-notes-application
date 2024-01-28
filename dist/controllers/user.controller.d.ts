@@ -6,4 +6,5 @@ export declare class user {
     modifyDataUser(req: Request, res: Response): Promise<Response<any, Record<string, any>>>;
     getHistoryPaymentsByUser(req: Request, res: Response): Promise<void>;
     getUsersCancelados(req: Request, res: Response): Promise<void>;
+    getUserById(req: Request, res: Response): Promise<Response<any, Record<string, any>>>;
 }

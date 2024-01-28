@@ -47,7 +47,8 @@ export class user {
         lastName: dataUser.lastName,
       });
 
-      if (isDataExists) return res.status(401).json({ response: "el usuario ya existe" });
+      if (isDataExists)
+        return res.status(401).json({ response: "el usuario ya existe" });
 
       // todo: save user in database
       const saveData = await userModel.create(dataUser);
@@ -114,6 +115,19 @@ export class user {
       const query = await userModel.find({ cancelado: true });
 
       res.json({ length: query.length, response: query });
+    } catch (error) {
+      res.status(500).json({ response: error });
+    }
+  }
+
+  async getUserById(req: Request, res: Response) {
+    try {
+      const { username } = req.params;
+      const query = await userModel.findOne({ username });
+
+      if (!query) return res.json({ response: "error" });
+
+      return res.json({ response: "user find", details: query });
     } catch (error) {
       res.status(500).json({ response: error });
     }

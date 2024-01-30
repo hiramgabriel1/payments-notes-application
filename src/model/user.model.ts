@@ -42,11 +42,14 @@ const user = new mongoose.Schema({
   cancelado: {
     type: Boolean,
   },
+
+  daysPayment: {
+    type: String,
+  },
+
+  moneyToPayment: {
+    type: Number,
+  },
 });
 
 export const userModel = mongoose.model("users", user);
-// Javascript -> tipado dinamico
-// example const username = "jafete"
-
-// TypeScript -> tipado fuerte
-// example -> const username: string = "jafete"

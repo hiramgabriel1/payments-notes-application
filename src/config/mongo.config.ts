@@ -12,7 +12,4 @@ const connection = async () => {
     }
 }
 
-// ! brogrammer theme
-// ! fuente de letra: radeon semibold
-
 export default connection

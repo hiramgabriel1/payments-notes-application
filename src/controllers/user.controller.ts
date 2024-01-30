@@ -28,6 +28,7 @@ export class user {
         paymentMethod,
         pagado,
         cancelado,
+        moneyToPayment,
       } = req.body;
 
       const dataUser = {
@@ -40,6 +41,14 @@ export class user {
         paymentMethod: paymentMethod,
         pagado: pagado,
         cancelado: cancelado,
+        moneyToPayment: moneyToPayment,
+      };
+
+      const methodsPayment = {
+        bbva: "BBVA",
+        bancomer: "bancomer",
+        banorte: "banorte",
+        banamex: "banamex",
       };
 
       const isDataExists = await userModel.findOne({
@@ -49,6 +58,8 @@ export class user {
 
       if (isDataExists)
         return res.status(401).json({ response: "el usuario ya existe" });
+
+      
 
       // todo: save user in database
       const saveData = await userModel.create(dataUser);

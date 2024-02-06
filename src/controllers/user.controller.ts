@@ -56,9 +56,8 @@ export class user {
         lastName: dataUser.lastName,
       });
 
-      if (isDataExists) return res.status(401).json({ response: "el usuario ya existe" });
-
-
+      if (isDataExists)
+        return res.status(401).json({ response: "el usuario ya existe" });
 
       // todo: save user in database
       const saveData = await userModel.create(dataUser);

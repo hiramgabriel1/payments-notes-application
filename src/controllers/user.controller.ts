@@ -28,6 +28,7 @@ export class user {
         paymentMethod,
         pagado,
         cancelado,
+        daysPayment,
         moneyToPayment,
       } = req.body;
 
@@ -41,15 +42,9 @@ export class user {
         paymentMethod: paymentMethod,
         pagado: pagado,
         cancelado: cancelado,
+        daysPayment: daysPayment,
         moneyToPayment: moneyToPayment,
       };
-
-      // const methodsPayment = {
-      //   bbva: "BBVA",
-      //   bancomer: "bancomer",
-      //   banorte: "banorte",
-      //   banamex: "banamex",
-      // };
 
       const isDataExists = await userModel.findOne({
         username: dataUser.username,

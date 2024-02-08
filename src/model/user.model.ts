@@ -24,11 +24,11 @@ const user = new mongoose.Schema({
   },
 
   fechaPrestamo: {
-    type: Date,
+    type: String,
   },
 
   fechaPago: {
-    type: Date,
+    type: String,
   },
 
   paymentMethod: {

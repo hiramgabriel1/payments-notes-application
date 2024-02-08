@@ -33,6 +33,8 @@ export declare const userModel: mongoose.Model<{
     paymentMethod?: string;
     pagado?: boolean;
     cancelado?: boolean;
+    daysPayment?: string;
+    moneyToPayment?: number;
 }, {}, {}, {}, mongoose.Document<unknown, {}, {
     username?: string;
     lastName?: string;
@@ -43,6 +45,8 @@ export declare const userModel: mongoose.Model<{
     paymentMethod?: string;
     pagado?: boolean;
     cancelado?: boolean;
+    daysPayment?: string;
+    moneyToPayment?: number;
 }> & {
     username?: string;
     lastName?: string;
@@ -53,6 +57,8 @@ export declare const userModel: mongoose.Model<{
     paymentMethod?: string;
     pagado?: boolean;
     cancelado?: boolean;
+    daysPayment?: string;
+    moneyToPayment?: number;
 } & {
     _id: mongoose.Types.ObjectId;
 }, mongoose.Schema<any, mongoose.Model<any, any, any, any, any, any>, {}, {}, {}, {}, mongoose.DefaultSchemaOptions, {
@@ -65,6 +71,8 @@ export declare const userModel: mongoose.Model<{
     paymentMethod?: string;
     pagado?: boolean;
     cancelado?: boolean;
+    daysPayment?: string;
+    moneyToPayment?: number;
 }, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
     username?: string;
     lastName?: string;
@@ -75,6 +83,8 @@ export declare const userModel: mongoose.Model<{
     paymentMethod?: string;
     pagado?: boolean;
     cancelado?: boolean;
+    daysPayment?: string;
+    moneyToPayment?: number;
 }>> & mongoose.FlatRecord<{
     username?: string;
     lastName?: string;
@@ -85,6 +95,8 @@ export declare const userModel: mongoose.Model<{
     paymentMethod?: string;
     pagado?: boolean;
     cancelado?: boolean;
+    daysPayment?: string;
+    moneyToPayment?: number;
 }> & {
     _id: mongoose.Types.ObjectId;
 }>>;

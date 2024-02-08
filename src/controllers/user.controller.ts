@@ -37,8 +37,8 @@ export class user {
         lastName: lastName,
         capitalPrestado: capitalPrestado,
         total: total,
-        fechaPrestamo: new Date(fechaPrestamo).toDateString(),
-        fechaPago: new Date(fechaPago).toDateString(),
+        fechaPrestamo: fechaPrestamo,
+        fechaPago: fechaPago,
         paymentMethod: paymentMethod,
         pagado: pagado,
         cancelado: cancelado,
@@ -59,8 +59,8 @@ export class user {
 
       return saveData
         ? res
-            .status(200)
-            .json({ response: "usuario guardado", details: saveData })
+          .status(200)
+          .json({ response: "usuario guardado", details: saveData })
         : res.status(500).json({ response: "error" });
     } catch (error) {
       res.status(500).json({ responseError: error });

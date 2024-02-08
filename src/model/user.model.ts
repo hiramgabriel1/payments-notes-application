@@ -50,6 +50,10 @@ const user = new mongoose.Schema({
   moneyToPayment: {
     type: Number,
   },
+
+  direccion: {
+    type: String
+  }
 });
 
 export const userModel = mongoose.model("users", user);

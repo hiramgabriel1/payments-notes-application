@@ -35,6 +35,10 @@ const user = new mongoose.Schema({
     type: String,
   },
 
+  direccion: {
+    type: String
+  },
+
   pagado: {
     type: Boolean,
   },
@@ -51,9 +55,7 @@ const user = new mongoose.Schema({
     type: Number,
   },
 
-  direccion: {
-    type: String
-  }
+
 });
 
 export const userModel = mongoose.model("users", user);

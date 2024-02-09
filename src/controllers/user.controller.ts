@@ -26,11 +26,11 @@ export class user {
         fechaPrestamo,
         fechaPago,
         paymentMethod,
+        direccion,
         pagado,
         cancelado,
         daysPayment,
         moneyToPayment,
-        direccion
       } = req.body;
 
       const dataUser = {
@@ -41,11 +41,11 @@ export class user {
         fechaPrestamo: fechaPrestamo,
         fechaPago: fechaPago,
         paymentMethod: paymentMethod,
+        direccion: direccion,
         pagado: pagado,
         cancelado: cancelado,
         daysPayment: daysPayment,
         moneyToPayment: moneyToPayment,
-        direccion: direccion
       };
 
       const isDataExists = await userModel.findOne({

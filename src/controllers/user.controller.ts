@@ -27,6 +27,7 @@ export class user {
         fechaPago,
         paymentMethod,
         direccion,
+        modalityPayment,
         pagado,
         cancelado,
         daysPayment,
@@ -42,6 +43,7 @@ export class user {
         fechaPago: fechaPago,
         paymentMethod: paymentMethod,
         direccion: direccion,
+        modalityPayment: modalityPayment,
         pagado: pagado,
         cancelado: cancelado,
         daysPayment: daysPayment,
@@ -61,8 +63,8 @@ export class user {
 
       return saveData
         ? res
-          .status(200)
-          .json({ response: "usuario guardado", details: saveData })
+            .status(200)
+            .json({ response: "usuario guardado", details: saveData })
         : res.status(500).json({ response: "error" });
     } catch (error) {
       res.status(500).json({ responseError: error });

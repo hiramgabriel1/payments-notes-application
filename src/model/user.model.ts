@@ -14,7 +14,7 @@ const user = new mongoose.Schema({
   },
 
   capitalPrestado: {
-    type: String,
+    type: Number,
     require: true,
   },
 
@@ -59,7 +59,7 @@ const user = new mongoose.Schema({
     type: String,
     require: true,
   },
-  
+
 });
 
 export const userModel = mongoose.model("users", user);

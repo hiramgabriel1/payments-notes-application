@@ -60,6 +60,10 @@ const user = new mongoose.Schema({
     require: true,
   },
 
+  grupo: {
+    type: String
+  }
 });
 
 export const userModel = mongoose.model("users", user);
+

@@ -32,7 +32,7 @@ const user = new mongoose.Schema({
   },
 
   paymentMethod: {
-    type: String,
+    type: String
   },
 
   direccion: {
@@ -62,6 +62,10 @@ const user = new mongoose.Schema({
 
   grupo: {
     type: String
+  },
+
+  totalPagado: {
+    type: Number
   }
 });
 

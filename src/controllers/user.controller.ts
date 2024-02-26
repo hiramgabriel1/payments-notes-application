@@ -47,7 +47,7 @@ export class user {
         direccion: direccion,
         modalityPayment: modalityPayment,
         grupo: grupo,
-        totalPagado: totalPagado,
+        totalPagado: 0,
         pagado: pagado,
         cancelado: cancelado,
         daysPayment: daysPayment,

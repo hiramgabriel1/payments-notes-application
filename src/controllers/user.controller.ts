@@ -48,6 +48,7 @@ export class user {
         modalityPayment: modalityPayment,
         grupo: grupo,
         totalPagado: 0,
+        historialPagos: [],
         pagado: pagado,
         cancelado: cancelado,
         daysPayment: daysPayment,
@@ -93,39 +94,43 @@ export class user {
 
   async modifyDataUser(req: Request, res: Response) {
     try {
-      const { id } = req.params;
-      const newData = req.body;
+        const { id } = req.params;
+        const newData = req.body;
 
-      // Verificar si se proporciona totalPagado
-      if (newData.totalPagado !== undefined) {
-          // Obtener el usuario actual
-          const user = await userModel.findById(id);
+        // Verificar si se proporciona totalPagado
+        if (newData.totalPagado !== undefined) {
+            // Obtener el usuario actual
+            const user = await userModel.findById(id);
 
-          if (!user) {
-              return res.status(404).json({ response: "Usuario no encontrado" });
-          }
+            if (!user) {
+                return res.status(404).json({ response: "Usuario no encontrado" });
+            }
 
-          // Agregar totalPagado al historial de pagos
-          user.historialPagos.push(newData.totalPagado);
+            // Agregar totalPagado al historial de pagos
+            user.historialPagos.push(newData.totalPagado);
 
-          // Guardar el usuario actualizado en la base de datos
-          const updatedUser = await userModel.findByIdAndUpdate(id, { $set: newData }, { new: true });
+            // Guardar el usuario actualizado en la base de datos
+            const updatedUser = await userModel.findByIdAndUpdate(id, { $set: newData }, { new: true });
 
-          return res.status(200).json({ response: "Usuario editado", details: updatedUser });
-      } else {
-          // Si no se proporciona totalPagado, realizar la actualización normal
-          const updatedUser = await userModel.findByIdAndUpdate(id, { $set: newData }, { new: true });
+            // Actualizar el historial de pagos en la base de datos
+            await userModel.findByIdAndUpdate(id, { historialPagos: user.historialPagos });
 
-          if (updatedUser) {
-              return res.status(200).json({ response: "Usuario editado", details: updatedUser });
-          } else {
-              return res.status(404).json({ response: "Usuario no encontrado" });
-          }
-      }
-  } catch (error) {
-      res.status(500).json({ response: error });
-  }
-  }
+            return res.status(200).json({ response: "Usuario editado", details: updatedUser });
+        } else {
+            // Si no se pasa totalPagado realizo la actualización normal
+            const updatedUser = await userModel.findByIdAndUpdate(id, { $set: newData }, { new: true });
+
+            if (updatedUser) {
+                return res.status(200).json({ response: "Usuario editado", details: updatedUser });
+            } else {
+                return res.status(404).json({ response: "Usuario no encontrado" });
+            }
+        }
+    } catch (error) {
+        res.status(500).json({ response: error });
+    }
+}
+
 
   async getHistoryPaymentsByUser(req: Request, res: Response) {
     try {

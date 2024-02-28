@@ -96,20 +96,35 @@ export class user {
       const { id } = req.params;
       const newData = req.body;
 
-      const query = await userModel.findOneAndUpdate(
-        { _id: id },
-        { $set: newData },
-        { new: true }
-      );
+      // Verificar si se proporciona totalPagado
+      if (newData.totalPagado !== undefined) {
+          // Obtener el usuario actual
+          const user = await userModel.findById(id);
 
-      if (query) {
-        return res
-          .status(200)
-          .json({ response: "usuario editado", details: query });
+          if (!user) {
+              return res.status(404).json({ response: "Usuario no encontrado" });
+          }
+
+          // Agregar totalPagado al historial de pagos
+          user.historialPagos.push(newData.totalPagado);
+
+          // Guardar el usuario actualizado en la base de datos
+          const updatedUser = await userModel.findByIdAndUpdate(id, { $set: newData }, { new: true });
+
+          return res.status(200).json({ response: "Usuario editado", details: updatedUser });
+      } else {
+          // Si no se proporciona totalPagado, realizar la actualización normal
+          const updatedUser = await userModel.findByIdAndUpdate(id, { $set: newData }, { new: true });
+
+          if (updatedUser) {
+              return res.status(200).json({ response: "Usuario editado", details: updatedUser });
+          } else {
+              return res.status(404).json({ response: "Usuario no encontrado" });
+          }
       }
-    } catch (error) {
+  } catch (error) {
       res.status(500).json({ response: error });
-    }
+  }
   }
 
   async getHistoryPaymentsByUser(req: Request, res: Response) {

@@ -66,6 +66,11 @@ const user = new mongoose.Schema({
 
   totalPagado: {
     type: Number
+  },
+
+  historialPagos: {
+    type: [Number],
+    default: []
   }
 });
 
